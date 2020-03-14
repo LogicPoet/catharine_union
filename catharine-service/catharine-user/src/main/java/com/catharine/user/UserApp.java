@@ -8,5 +8,6 @@ package com.catharine.user;
  * @author LZ
  * @date 2020/3/14 16:34
  **/
+
 public class UserApp {
 }

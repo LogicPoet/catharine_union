@@ -14,7 +14,11 @@
     <packaging>jar</packaging>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.catharine</groupId>
+            <artifactId>catharine-user-api</artifactId>
+            <version>${catharine.project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

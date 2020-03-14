@@ -88,7 +88,7 @@ public class CatharineApplication {
         props.setProperty("spring.cloud.nacos.config.server-addr", NacosConstant.NACOS_ADDR);
         props.setProperty("spring.cloud.nacos.config.prefix", NacosConstant.NACOS_CONFIG_PREFIX);
         props.setProperty("spring.cloud.nacos.config.file-extension", NacosConstant.NACOS_CONFIG_FORMAT);
-        props.setProperty("spring.cloud.sentinel.transport.dashboard", SentinelConstant.SENTINEL_ADDR);
+        //props.setProperty("spring.cloud.sentinel.transport.dashboard", SentinelConstant.SENTINEL_ADDR);
         props.setProperty("spring.cloud.alibaba.seata.tx-service-group", appName.concat(NacosConstant.NACOS_GROUP_SUFFIX));
         // 加载自定义组件
         List<LauncherService> launcherList = new ArrayList<>();

@@ -1,0 +1,12 @@
+#所有环境的公共配置
+server:
+  port: 20002
+# 应用名称
+spring:
+  application:
+    name: catharine-user-service
+
+info:
+  app-name: catharine-user-service
+  author: liuzhi
+  email: liuzhi0621@gmail.com

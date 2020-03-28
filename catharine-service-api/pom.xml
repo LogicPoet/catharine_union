@@ -10,9 +10,8 @@
 
     <artifactId>catharine-service-api</artifactId>
     <name>${project.artifactId}</name>
-    <version>${catharine.project.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <description>SpringBlade 微服务API集合</description>
 
     <dependencies>
 

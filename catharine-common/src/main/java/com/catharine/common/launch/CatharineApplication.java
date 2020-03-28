@@ -78,11 +78,11 @@ public class CatharineApplication {
         props.setProperty("spring.profiles.active", profile);
         props.setProperty("info.version", AppConstant.APPLICATION_VERSION);
         props.setProperty("info.desc", appName);
-        props.setProperty("blade.env", profile);
-        props.setProperty("blade.name", appName);
-        props.setProperty("blade.is-local", String.valueOf(isLocalDev()));
-        props.setProperty("blade.dev-mode", profile.equals(AppConstant.PROD_CODE) ? "false" : "true");
-        props.setProperty("blade.service.version", AppConstant.APPLICATION_VERSION);
+        props.setProperty("catharine.env", profile);
+        props.setProperty("catharine.name", appName);
+        props.setProperty("catharine.is-local", String.valueOf(isLocalDev()));
+        props.setProperty("catharine.dev-mode", profile.equals(AppConstant.PROD_CODE) ? "false" : "true");
+        props.setProperty("catharine.service.version", AppConstant.APPLICATION_VERSION);
         props.setProperty("spring.main.allow-bean-definition-overriding", "true");
         props.setProperty("spring.cloud.nacos.discovery.server-addr", NacosConstant.NACOS_ADDR);
         props.setProperty("spring.cloud.nacos.config.server-addr", NacosConstant.NACOS_ADDR);

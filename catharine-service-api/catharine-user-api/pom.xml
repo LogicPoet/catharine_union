@@ -9,7 +9,7 @@
     </parent>
     <artifactId>catharine-user-api</artifactId>
     <name>${project.artifactId}</name>
-    <version>${catharine.project.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
 </project>

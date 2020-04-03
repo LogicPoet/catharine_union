@@ -1,4 +1,38 @@
 -- ----------------------------
+-- Table structure for cat_client
+-- ----------------------------
+DROP TABLE IF EXISTS `cat_client`;
+CREATE TABLE `cat_client`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `client_id` varchar(48)  NOT NULL COMMENT '客户端id',
+  `client_secret` varchar(256)  NOT NULL COMMENT '客户端密钥',
+  `resource_ids` varchar(256)  DEFAULT NULL COMMENT '资源集合',
+  `scope` varchar(256)  NOT NULL COMMENT '授权范围',
+  `authorized_grant_types` varchar(256)  NOT NULL COMMENT '授权类型',
+  `web_server_redirect_uri` varchar(256)  DEFAULT NULL COMMENT '回调地址',
+  `authorities` varchar(256)  DEFAULT NULL COMMENT '权限',
+  `access_token_validity` int(11) NOT NULL COMMENT '令牌过期秒数',
+  `refresh_token_validity` int(11) NOT NULL COMMENT '刷新令牌过期秒数',
+  `additional_information` varchar(4096)  DEFAULT NULL COMMENT '附加说明',
+  `auto_approve` varchar(256)  DEFAULT NULL COMMENT '自动授权',
+
+  `create_user` int(11) DEFAULT NULL COMMENT '创建人',
+  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_user` int(11) DEFAULT NULL COMMENT '修改人',
+  `update_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
+  `status` int(2) NOT NULL COMMENT '状态',
+  `is_deleted` int(2) NOT NULL COMMENT '是否已删除',
+  PRIMARY KEY (`id`) USING BTREE
+) COMMENT = '客户端表';
+
+-- ----------------------------
+-- Records of cat_client
+-- ----------------------------
+BEGIN;
+INSERT INTO `cat_client` VALUES (1, 'sword', 'sword_secret', NULL, 'all', 'refresh_token,password,authorization_code', 'http://localhost:8888', NULL, 3600, 604800, NULL, NULL, 1, '2019-03-24 10:40:55', 1, '2019-03-24 10:40:59', 1, 0), (2, 'saber', 'saber_secret', NULL, 'all', 'refresh_token,password,authorization_code', 'http://localhost:8080', NULL, 3600, 604800, NULL, NULL, 1, '2019-03-24 10:42:29', 1, '2019-03-24 10:42:32', 1, 0);
+COMMIT;
+
+-- ----------------------------
 --  Table structure for `cat_staff` 工会职员表
 -- ----------------------------
 DROP TABLE IF EXISTS `cat_staff`;

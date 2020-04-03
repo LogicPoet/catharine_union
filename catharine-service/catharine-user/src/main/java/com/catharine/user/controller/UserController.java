@@ -1,6 +1,6 @@
 package com.catharine.user.controller;
 
-import com.catharine.common.support.R;
+//import com.catharine.common.support.R;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    @GetMapping("/test")
-    public R test(){
-        return R.data("测试项目启动");
-    }
+    //@GetMapping("/test")
+    //public R test(){
+    //    return R.data("测试项目启动");
+    //}
 
 }

@@ -1,9 +1,12 @@
 package com.catharine.user;
 
+//import com.catharine.common.constant.AppConstant;
+//import com.catharine.common.launch.CatharineApplication;
 import com.catharine.common.constant.AppConstant;
 import com.catharine.common.launch.CatharineApplication;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
+//import org.springframework.cloud.client.SpringCloudApplication;
 
 /**
  * <p>Title: UserApp</p>

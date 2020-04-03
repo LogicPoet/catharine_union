@@ -2,16 +2,13 @@
 server:
   port: 20002
 # 应用名称
-#spring:
-#  application:
-#    name: catharine-user-service
-#  datasource:
-#    url: ${catharine.datasource.dev.url}
-#    username: ${catharine.datasource.dev.username}
-#    password: ${catharine.datasource.dev.password}
-##    driver-class-name: ${catharine.datasource.dev.driver-class-name}com.alibaba.druid.proxy.DruidDriver
-##    driver-class-name: com.mysql.cj.jdbc.Driver
-#    driver-class-name: com.alibaba.druid.proxy.DruidDriver
+spring:
+  application:
+    name: catharine-user
+  datasource:
+    url: ${catharine.datasource.dev.url}
+    username: ${catharine.datasource.dev.username}
+    password: ${catharine.datasource.dev.password}
 
 
 info:

@@ -1,11 +1,11 @@
 package com.catharine.common.support;
 
 import com.catharine.common.constant.SystemConstant;
-import com.sun.istack.internal.Nullable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.lang.Nullable;
 import org.springframework.util.ObjectUtils;
 
 

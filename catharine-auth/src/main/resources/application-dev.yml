@@ -1,10 +1,14 @@
 #所有环境的公共配置
 server:
-  port: 20002
+  port: 20001
 # 应用名称
 spring:
   application:
     name: cat-auth
+  datasource:
+    url: ${catharine.datasource.dev.url}
+    username: ${catharine.datasource.dev.username}
+    password: ${catharine.datasource.dev.password}
 
 info:
   app-name: catharine-user-service

@@ -14,7 +14,11 @@
     <packaging>pom</packaging>
 
     <dependencies>
-
+        <dependency>
+            <groupId>com.catharine</groupId>
+            <artifactId>catharine-common</artifactId>
+            <version>${catharine.project.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

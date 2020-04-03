@@ -1,0 +1,11 @@
+INSERT INTO `blade_menu`(`parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
+VALUES (0, 'catmenu', '授权服务', 'menu', '/auth/catmenu', NULL, 1, 1, 0, 1, NULL, 0);
+set @parentid = (SELECT LAST_INSERT_ID());
+INSERT INTO `blade_menu`(`parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
+VALUES (@parentid, 'catmenu_add', '新增', 'add', '/auth/catmenu/add', 'plus', 1, 2, 1, 1, NULL, 0);
+INSERT INTO `blade_menu`(`parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
+VALUES (@parentid, 'catmenu_edit', '修改', 'edit', '/auth/catmenu/edit', 'form', 2, 2, 1, 2, NULL, 0);
+INSERT INTO `blade_menu`(`parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
+VALUES (@parentid, 'catmenu_delete', '删除', 'delete', '/api/catharine-auth/catmenu/remove', 'delete', 3, 2, 1, 3, NULL, 0);
+INSERT INTO `blade_menu`(`parent_id`, `code`, `name`, `alias`, `path`, `source`, `sort`, `category`, `action`, `is_open`, `remark`, `is_deleted`)
+VALUES (@parentid, 'catmenu_view', '查看', 'view', '/auth/catmenu/view', 'file-text', 4, 2, 1, 2, NULL, 0);

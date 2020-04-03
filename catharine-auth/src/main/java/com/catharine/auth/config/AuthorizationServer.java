@@ -1,8 +1,5 @@
 package com.catharine.auth.config;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,15 +11,20 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.provider.ClientRegistrationException;
+import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.InMemoryAuthorizationCodeServices;
+import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
+import javax.sql.DataSource;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -48,6 +50,8 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     private AuthenticationManager authenticationManager;
     @Autowired
     private JwtAccessTokenConverter jwtAccessTokenConverter;
+    @Autowired
+    private DataSource dataSource;
 
     /**
      * 配置令牌端点的安全策略
@@ -79,22 +83,12 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         //选择获取详情的方式
-        clients.inMemory()
-                //设置client-id:（必须的）用来标识客户的Id
-                .withClient("c1")
-                //secret：（需要值得信任的客户端）客户端安全码，如果有的话。
-                .secret("secret")
-                .resourceIds("res1")
-                //authorizedGrantTypes：此客户端可以使用的授权类型，默认为空。
-                .authorizedGrantTypes("authorization_code", "password","client_credentials","implicit","refresh_token")
-                //scope：用来限制客户端的访问范围，如果为空（默认）的话，那么客户端拥有全部的访问范围。
-                .scopes("all")
-                .autoApprove(false)
-                //验证的回调地址
-                .redirectUris("http://www.baidu.com")
-                //authorities：此客户端可以使用的权限（基于Spring Security authorities）。
-                .authorities()
-        ;
+        clients.withClientDetails(clientDetails());
+    }
+
+    @Bean
+    public ClientDetailsService clientDetails() {
+        return new JdbcClientDetailsService(dataSource);
     }
 
     /**
@@ -140,7 +134,6 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     @Bean
     public AuthorizationServerTokenServices tokenServices(){
         DefaultTokenServices tokenServices=new DefaultTokenServices();
-
         //设置客户端详情服务
         tokenServices.setClientDetailsService(clientDetailsService);
         //设置令牌存储策略
@@ -148,6 +141,7 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
         //设置支持刷新令牌
         tokenServices.setSupportRefreshToken(true);
 
+        //设置为jwt令牌
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         tokenEnhancerChain.setTokenEnhancers(Collections.singletonList(jwtAccessTokenConverter));
         tokenServices.setTokenEnhancer(tokenEnhancerChain);

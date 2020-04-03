@@ -27,7 +27,7 @@ public class CodeGenerator {
     /**
      * 代码后端生成的地址《项目名》
      */
-    public static String PACKAGE_DIR = "catharine-auth";
+    public static String PACKAGE_DIR = "catharine-ops-code";
     /**
      * 前端代码生成地址
      */
@@ -39,7 +39,7 @@ public class CodeGenerator {
     /**
      * 需要生成的表名(两者只能取其一)
      */
-    public static String[] INCLUDE_TABLES = {"cat_client"};
+    public static String[] INCLUDE_TABLES = {"cat_staff","","cat_menu","cat_role","cat_role_menu"};
     /**
      * 需要排除的表名(两者只能取其一)
      */

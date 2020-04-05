@@ -10,7 +10,6 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 import java.io.Serializable;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 

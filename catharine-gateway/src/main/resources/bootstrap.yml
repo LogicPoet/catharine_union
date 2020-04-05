@@ -1,0 +1,46 @@
+#所有环境的公共配置
+server:
+  port: 20002
+
+# 应用名称
+spring:
+  application:
+    name: catharine-gateway
+  cloud:
+    #discovery:
+    # reactive:
+    #  enabled: false
+    loadbalancer:
+      retry:
+        enabled: true
+    # api网关配置
+    gateway:
+      # 是否与服务发现组件进行结合，通过 serviceId 转发到具体的服务实例。默认为false，设为true便开启通过服务中心的自动根据 serviceId 创建路由的功能。
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      # 路由配置
+      routes:
+        # 路由id，http://gateway地址/id  这样就能转发
+        - id: catharine-user
+          # 转发目的地址
+          # lb://nacos上的微服务名
+          uri: lb://catharine-user
+          # uri: http://127.0.0.1:20000
+          # 断言：判断哪些路径会被转发,并且不能为空
+          # 例 http://网关地址/token/auth   --->  http://uri/token/auth
+          predicates:
+            - Path=/catharine-user/**
+
+        - id: catharine-auth
+          uri: lb://catharine-auth
+          predicates:
+            - Path=/catharine-auth/**
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+info:
+  app-name: catharine-user-service
+  author: liuzhi
+  email: liuzhi0621@gmail.com

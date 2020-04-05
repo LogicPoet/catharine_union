@@ -19,6 +19,11 @@
             <artifactId>catharine-common</artifactId>
             <version>${catharine.project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis.plus.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

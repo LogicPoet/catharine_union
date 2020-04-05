@@ -5,16 +5,13 @@ import com.catharine.common.support.R;
 import com.catharine.user.dto.UserInfoDTO;
 import com.catharine.user.entity.CatStaff;
 import com.catharine.user.mapper.CatStaffMapper;
-import com.catharine.user.service.ICatStaffService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
-import org.springframework.lang.Nullable;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -60,14 +57,15 @@ public class UserClient implements IUserClient {
     @Override
     @GetMapping(API_PREFIX + "/user-info")
     public R<UserInfoDTO> userInfo(String account, String password) {
-        if (StringUtils.hasText(password)&&StringUtils.hasText(account)){
+
+        if (StringUtils.isEmpty(account)&& StringUtils.isEmpty(password)){
             return R.fail("请求参数不合法");
         }
         List<CatStaff> catStaffs;
-        if (StringUtils.hasText(password)) {
-            catStaffs = staffMapper.selectList(Wrappers.<CatStaff>lambdaQuery().eq(CatStaff::getAccount, account));
-        } else {
+        if (!StringUtils.isEmpty(password)) {
             catStaffs = staffMapper.selectList(Wrappers.<CatStaff>lambdaQuery().eq(CatStaff::getAccount, account).eq(CatStaff::getPassword, password));
+        } else {
+            catStaffs = staffMapper.selectList(Wrappers.<CatStaff>lambdaQuery().eq(CatStaff::getAccount, account));
         }
         if (CollectionUtils.isEmpty(catStaffs)) {
             //没有查询出数据

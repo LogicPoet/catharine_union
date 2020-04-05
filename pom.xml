@@ -32,6 +32,7 @@
         <spring.cloud.version>Hoxton.SR1</spring.cloud.version>
         <spring.cloud.alibaba.version>2.1.1.RELEASE</spring.cloud.alibaba.version>
         <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
+        <github.feign-okhttp>10.4.0</github.feign-okhttp>
         <spring.boot.admin.version>2.2.0</spring.boot.admin.version>
         <spring.platform.version>Cairo-SR8</spring.platform.version>
 

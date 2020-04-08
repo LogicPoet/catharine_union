@@ -10,9 +10,6 @@ spring:
     username: ${catharine.datasource.dev.username}
     password: ${catharine.datasource.dev.password}
 
-
-info:
-  app-name: catharine-user-service
-  author: liuzhi
-  email: liuzhi0621@gmail.com
-debug: true
+logging:
+  level:
+    com.catharine.user.feign.IUserClient: debug

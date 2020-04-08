@@ -9,28 +9,3 @@ spring:
     url: ${catharine.datasource.dev.url}
     username: ${catharine.datasource.dev.username}
     password: ${catharine.datasource.dev.password}
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: false
-          #开启小写验证，默认feign根据服务名查找都是用的全大写
-          lowerCaseServiceId: true
-      routes:
-        - id: client-test
-          uri: lb://CLIENT-TEST
-          predicates:
-            - Path=/testclient/**
-          filters:
-            - StripPrefix=1
-        - id: service-feign
-          uri: lb://FEIGN
-          predicates:
-            - Path=/service-feign/**
-          filters:
-            - StripPrefix=1
-
-info:
-  app-name: catharine-user-service
-  author: liuzhi
-  email: liuzhi0621@gmail.com

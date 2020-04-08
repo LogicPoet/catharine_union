@@ -42,18 +42,4 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
-    ///**
-    // * 资源服务令牌解析服务
-    // *
-    // * @return
-    // */
-    // @Bean
-    //public ResourceServerTokenServices tokenService() {
-    //    //使用远程服务请求授权服务器校验token,必须指定校验token 的url、client_id，client_secret
-    //    RemoteTokenServices service=new RemoteTokenServices();
-    //    service.setCheckTokenEndpointUrl("http://localhost:8080/oauth/check_token");
-    //    service.setClientId("c1");
-    //    service.setClientSecret("secret");
-    //    return service;
-    //}
 }

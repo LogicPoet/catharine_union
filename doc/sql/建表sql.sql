@@ -43,31 +43,38 @@ CREATE TABLE `oauth_code` (
 ) COMMENT = '授权码表' ;
 
 -- ----------------------------
---  Table structure for `cat_staff` 工会职员表
+--  Table structure for `cat_adventure` 冒险家表
 -- ----------------------------
-DROP TABLE IF EXISTS `cat_staff`;
-CREATE TABLE `cat_staff` (
-                           `id` bigint NOT NULL COMMENT '主键',
-                           `account` varchar(45) DEFAULT NULL COMMENT '账号',
-                           `password` varchar(45) DEFAULT NULL COMMENT '密码',
-                           `nickname` varchar(20) DEFAULT NULL COMMENT '昵称',
-                           `email` varchar(45) DEFAULT NULL COMMENT '邮箱',
-                           `phone` varchar(45) DEFAULT NULL COMMENT '手机',
-                           `birthday` datetime DEFAULT NULL COMMENT '生日',
-                           `sex` smallint(6) DEFAULT NULL COMMENT '性别[1:男,0:女]',
-                           `role_id` varchar(255) DEFAULT NULL COMMENT '角色id合集,以英文逗号分隔',
-                           `dept_id` varchar(255) DEFAULT NULL COMMENT '部门id合集,以英文逗号分隔',
+DROP TABLE IF EXISTS `cat_adventure`;
+CREATE TABLE `cat_adventure` (
+                                 `id` bigint NOT NULL COMMENT '主键',
+                                 `account` varchar(45) DEFAULT NULL COMMENT '账号',
+                                 `password` varchar(45) DEFAULT NULL COMMENT '密码',
 
-                           `create_user` int(11) DEFAULT NULL COMMENT '创建人',
-                           `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-                           `update_user` int(11) DEFAULT NULL COMMENT '修改人',
-                           `update_time` datetime DEFAULT NULL COMMENT '修改时间',
-                           `status` int(2) DEFAULT NULL COMMENT '状态',
-                           `is_deleted` int(2) DEFAULT '0' COMMENT '是否已删除',
-                           PRIMARY KEY (`id`) USING BTREE
-);
+                                 `family_name` varchar(20) DEFAULT NULL COMMENT '姓',
+                                 `given_name` varchar(20) DEFAULT NULL COMMENT '名',
+                                 `sex` smallint(2) DEFAULT NULL COMMENT '性别[1:男,0:女]',
 
-INSERT INTO `cat_staff`(`id`, `account`, `password`, `nickname`, `email`, `phone`, `birthday`, `sex`, `role_id`, `dept_id`, `create_user`, `create_time`, `update_user`, `update_time`, `status`, `is_deleted`) VALUES (1, 'admin', '10470c3b4b1fed12c3baac014be15fac67c6e815', '管理员','admin@bladex.vip', '22233322', '2018-08-08 00:00:00', -1, '1', '1', -1, '2018-08-08 00:00:00', 1, '2019-12-11 10:39:20', 1, 0);
+                                 `race` varchar(10) DEFAULT NULL COMMENT '种族',
+                                 `birth` varchar(20) DEFAULT NULL COMMENT '出身地',
+                                 `birthday` datetime DEFAULT NULL COMMENT '出生日期',
+                                 `identity_id` varchar(20) DEFAULT NULL COMMENT '身份id',
+                                 `profession` varchar(10) DEFAULT NULL COMMENT '职业',
+                                 `basic_level` varchar(10) DEFAULT NULL COMMENT '基础等级',
+                                 `adventure_level` varchar(10) DEFAULT NULL COMMENT '冒险家等级',
+                                 `contact_address` varchar(45) DEFAULT NULL COMMENT '联络地址',
+
+                                 `role_id` varchar(255) DEFAULT NULL COMMENT '角色id合集,以英文逗号分隔',
+                                 `dept_id` varchar(255) DEFAULT NULL COMMENT '部门id合集,以英文逗号分隔',
+
+                                 `create_user` int(11) DEFAULT NULL COMMENT '创建人',
+                                 `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                                 `update_user` int(11) DEFAULT NULL COMMENT '修改人',
+                                 `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+                                 `status` smallint(2) DEFAULT NULL COMMENT '状态',
+                                 `is_deleted` smallint(2) DEFAULT '0' COMMENT '是否已删除',
+                                 PRIMARY KEY (`id`) USING BTREE
+)COMMENT = '冒险家表';
 
 -- ----------------------------
 --  Table structure for `cat_menu` 菜单资源

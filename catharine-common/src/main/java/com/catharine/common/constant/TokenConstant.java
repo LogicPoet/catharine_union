@@ -12,7 +12,7 @@ public interface TokenConstant {
 
     String SIGN_KEY = "Blade";
     String AVATAR = "avatar";
-    String HEADER = "blade-auth";
+    String HEADER = "cat-auth";
     String BEARER = "bearer";
     String ACCESS_TOKEN = "access_token";
     String REFRESH_TOKEN = "refresh_token";

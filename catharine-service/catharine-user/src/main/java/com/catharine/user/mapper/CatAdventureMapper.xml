@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.catharine.user.mapper.CatAdventureMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="catAdventureResultMap" type="com.catharine.user.entity.CatAdventure">
+        <id column="id" property="id"/>
+        <result column="account" property="account"/>
+        <result column="password" property="password"/>
+        <result column="family_name" property="familyName"/>
+        <result column="given_name" property="givenName"/>
+        <result column="sex" property="sex"/>
+        <result column="race" property="race"/>
+        <result column="birth" property="birth"/>
+        <result column="birthday" property="birthday"/>
+        <result column="identity_id" property="identityId"/>
+        <result column="profession" property="profession"/>
+        <result column="basic_level" property="basicLevel"/>
+        <result column="adventure_level" property="adventureLevel"/>
+        <result column="contact_address" property="contactAddress"/>
+        <result column="role_id" property="roleId"/>
+        <result column="dept_id" property="deptId"/>
+        <result column="create_user" property="createUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="is_deleted" property="isDeleted"/>
+    </resultMap>
+
+
+    <select id="selectCatAdventurePage" resultMap="catAdventureResultMap">
+        select * from cat_adventure where is_deleted = 0
+    </select>
+
+</mapper>
